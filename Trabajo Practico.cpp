@@ -10,10 +10,11 @@ using namespace std;
 
 int main() {
     string cosito[5];
-    int puntaje;
-    int mayorpuntuacion = 0;
-    int mayorrondas = 0;
-    string mayornombre;
+    int mayorPuntuacion = 0;
+    int rondasMayorPuntuacion = 0;
+    int menorRondas=0;
+    bool primeraRondaJuego=true;
+    string mayorNombre;
 
     //nuevo main.
 
@@ -25,10 +26,11 @@ int main() {
     switch (menu(cosito, 5)) {
     case '1': {
         system("cls");
+        int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
         bool primera_Generala = false;
         bool juegoterminado = false;
         int ronda = 0;
-        int puntos = 0;
+        int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
         int dados[5];
         int j;
         string nombre = pedir_nombre();
@@ -152,6 +154,24 @@ int main() {
         barrita();
         barrita();
         cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
+
+        // ACA SE COMPARA LA PUNTUACION CON LA PUNTUACION MAYOR
+
+        if (primeraRondaJuego)
+        {
+            menorRondas = ronda;
+            mayorNombre = nombre;
+            mayorPuntuacion = puntos;
+            rondasMayorPuntuacion = ronda;
+        }
+        else {
+        if (puntos > mayorPuntuacion) {
+            mayorNombre = nombre;
+            mayorPuntuacion = puntos;
+            rondasMayorPuntuacion = ronda;
+        }
+}
+
         bool teclaPulsada = false;
         while (teclaPulsada == false) {
             if (_kbhit()) {
@@ -171,11 +191,8 @@ int main() {
                 teclaPulsada = true;
             }
         }
-        if (puntos > mayorpuntuacion) {
-            mayornombre = nombre;
-            mayorpuntuacion = puntos;
-            mayorrondas = ronda;
-        }
+
+        
     }
         break;
     case '2':
@@ -189,9 +206,9 @@ int main() {
         barrita();
         cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
         barrita();
-        cout << "Nombre= " << mayornombre << endl;
-        cout << "Su puntuacion es= " << mayorpuntuacion << endl;
-        cout << "En la cantidad de rondas= " << mayorrondas << endl;
+        cout << "Nombre= " << mayorNombre << endl;
+        cout << "Su puntuacion es= " << mayorPuntuacion << endl;
+        cout << "En la cantidad de rondas= " << rondasMayorPuntuacion << endl;
         barrita();
         cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
         bool teclaPulsada = false;

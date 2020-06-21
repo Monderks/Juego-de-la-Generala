@@ -192,3 +192,12 @@ int trio_duo_mayor(int dados[]) {
         }
     }
 }
+
+
+
+
+void modoUnJugador(char mayorNombre, int mayorpuntuacion, int mayorrondas) {
+
+
+
+}
