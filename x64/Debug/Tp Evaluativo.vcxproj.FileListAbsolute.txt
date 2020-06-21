@@ -1,2 +1,4 @@
 C:\Users\El Ales\source\repos\Tp Evaluativo\x64\Debug\Tp Evaluativo.exe
 C:\Users\El Ales\source\repos\Tp Evaluativo\x64\Debug\Tp Evaluativo.pdb
+C:\Users\Usuario\source\repos\Monderks\Juego-de-la-Generala\x64\Debug\Tp Evaluativo.exe
+C:\Users\Usuario\source\repos\Monderks\Juego-de-la-Generala\x64\Debug\Tp Evaluativo.pdb

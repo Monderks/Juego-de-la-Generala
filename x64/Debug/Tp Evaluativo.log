@@ -1,5 +1,1 @@
-﻿  Trabajo Practico.cpp
-C:\Users\El Ales\source\repos\Tp Evaluativo\Trabajo Practico.cpp(39,23): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\El Ales\source\repos\Tp Evaluativo\SantyLib.h(40): warning C4715: 'seguirLanzando': no todas las rutas de acceso de control devuelven un valor
-C:\Users\El Ales\source\repos\Tp Evaluativo\Menu.h(56): warning C4715: 'menu': no todas las rutas de acceso de control devuelven un valor
-  Tp Evaluativo.vcxproj -> C:\Users\El Ales\source\repos\Tp Evaluativo\x64\Debug\Tp Evaluativo.exe
+﻿  Tp Evaluativo.vcxproj -> C:\Users\Usuario\Source\Repos\Monderks\Juego-de-la-Generala\x64\Debug\Tp Evaluativo.exe
