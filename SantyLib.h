@@ -195,9 +195,15 @@ int trio_duo_mayor(int dados[]) {
 
 
 
+/*
+void modoUnJugador(int mayorPuntuacion,
+int rondasMayorPuntuacion,
+int menorRondas,
+string mayorNombre) {
+}*/
 
-void modoUnJugador(char mayorNombre, int mayorpuntuacion, int mayorrondas) {
 
+void menuJuego() {
 
 
 }

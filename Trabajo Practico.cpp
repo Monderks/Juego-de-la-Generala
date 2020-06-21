@@ -12,10 +12,13 @@ int main() {
     string cosito[5];
     int mayorPuntuacion = 0;
     int rondasMayorPuntuacion = 0;
-    int menorRondas=-1;
     string mayorNombre;
+    bool seguirEjecutandoJuego = true;
+    bool ganoConPrimeraGenerala = false;
 
     //nuevo main.
+
+    while (seguirEjecutandoJuego) {
 
     cosito[0] = "presione 1 para iniciar el juego en modo 1 jugador";
     cosito[1] = "presione 2 para iniciar el juego en modo 2 jugadores";
@@ -24,6 +27,12 @@ int main() {
     cosito[4] = "presione 0 para salir";
     switch (menu(cosito, 5)) {
     case '1': {
+
+        /*modoUnJugador( mayorPuntuacion,
+             rondasMayorPuntuacion,
+             menorRondas,
+             mayorNombre);*/
+        
         system("cls");
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
         bool primera_Generala = false;
@@ -55,6 +64,7 @@ int main() {
                     cout << "[" << dados[i] << "]";
                 }
                 if (todosIguales(dados) && turno == 1) {
+                    ganoConPrimeraGenerala = true;
                     cout << endl;
                     cout << endl;
                     barrita();
@@ -68,28 +78,34 @@ int main() {
                     system("cls");
                     main();
                 }
-                cout << endl;
-                barrita();
-                cout << endl;
-                if (!seguirLanzando())
-                {
-                    seguir = false;
-                }
                 else
                 {
-                    cout << "cuantos dados? ";
-                    cin >> j;
                     cout << endl;
-                    for (int i = 0; i < j; i++) {
-                        int f;
-                        cout << "cual dado desea tirar? ";
-                        cin >> f;
-                        dados[f - 1] = rand() % 6 + 1;
+                    barrita();
+                    cout << endl;
+                    if (!seguirLanzando())
+                    {
+                        seguir = false;
+                    }
+                    else
+                    {
+                        cout << "cuantos dados? ";
+                        cin >> j;
+                        cout << endl;
+                        for (int i = 0; i < j; i++) {
+                            int f;
+                            cout << "cual dado desea tirar? ";
+                            cin >> f;
+                            dados[f - 1] = rand() % 6 + 1;
+                        }
                     }
                 }
+                
 
                 system("cls");
             }
+            //termina el while por turno
+
             cout << endl;
             cout << "los dados quedaron asi" << endl;
             barrita();
@@ -98,7 +114,6 @@ int main() {
             }
             cout << endl;
             barrita();
-            bool primera_Generala = false;
             if (generala(dados) == true && primera_Generala == false) {
                 puntaje = puntaje + 50;
                 puntos = puntos + puntaje;
@@ -155,10 +170,11 @@ int main() {
         cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
 
         // ACA SE COMPARA LA PUNTUACION CON LA PUNTUACION MAYOR
-
-        if (menorRondas=-1 || ronda<menorRondas)
+        //si es la primera ronada, menorRonda deberia tener valor-1
+        //en caso de ser la primera ronda, la asigna como la ronda de mayor puntuacion
+        //en caso de ser la partida con menor cantidad de rondas, tambien la asigna como partida con mayor puntuacion
+        if (ganoConPrimeraGenerala==true)
         {
-            menorRondas = ronda;
             mayorNombre = nombre;
             mayorPuntuacion = puntos;
             rondasMayorPuntuacion = ronda;
@@ -177,15 +193,14 @@ int main() {
                 char tecla = _getch();
                 if (tecla == '1') {
                     system("cls");
-                    main();
                 }
                 else if (tecla == '2') {
-                    system("exit");
+                    seguirEjecutandoJuego = false;
                 }
                 else {
                     cout << "Tecla invalida, hasta luego" << endl;
                     system("pause");
-                    system("exit");
+                    seguirEjecutandoJuego = false;
                 }
                 teclaPulsada = true;
             }
@@ -216,7 +231,7 @@ int main() {
                 char tecla = _getch();
                 if (tecla == '1') {
                     system("cls");
-                    main();
+                    seguirEjecutandoJuego=false;
                 }
                 else if (tecla == '2') {
                     system("exit");
@@ -224,7 +239,7 @@ int main() {
                 else {
                     cout << "Tecla invalida, hasta luego" << endl;
                     system("pause");
-                    system("exit");
+                    seguirEjecutandoJuego=false;
                 }
                 teclaPulsada = true;
             }
@@ -237,5 +252,9 @@ int main() {
     default:
         cout << "seleccione por favor del 0 al 4, gracias" << endl;
     }
+
+    //termina el while infinito
+    }
+
     return 0;
 }
