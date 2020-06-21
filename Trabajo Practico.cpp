@@ -29,8 +29,12 @@ int main() {
     switch (menu(cosito, 5)) {
     case '1': {
         
-       modoUnJugador( mayorPuntuacion, rondasMayorPuntuacion, mayorNombre, 
-           ganoConPrimeraGenerala, puntuacionMaximaFueConGeneralaServida, seguirEjecutandoJuego);
+       modoUnJugador(mayorPuntuacion,
+        rondasMayorPuntuacion,
+        mayorNombre,
+        seguirEjecutandoJuego,
+        ganoConPrimeraGenerala,
+        puntuacionMaximaFueConGeneralaServida);
         /*
         system("cls");
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA

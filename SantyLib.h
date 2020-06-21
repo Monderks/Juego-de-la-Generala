@@ -195,8 +195,12 @@ int trio_duo_mayor(int dados[]) {
     }
 }
 
-void modoUnJugador(int mayorPuntuacion, int rondasMayorPuntuacion, string mayorNombre, 
-    bool ganoConPrimeraGenerala, bool puntuacionMaximaFueConGeneralaServida, bool seguirEjecutandoJuego){
+void modoUnJugador(int &mayorPuntuacion,
+int &rondasMayorPuntuacion,
+string &mayorNombre,
+bool &seguirEjecutandoJuego,
+bool &ganoConPrimeraGenerala,
+bool &puntuacionMaximaFueConGeneralaServida){
 
     system("cls");
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
