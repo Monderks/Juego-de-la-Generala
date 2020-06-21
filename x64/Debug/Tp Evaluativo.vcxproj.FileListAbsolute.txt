@@ -1,0 +1,2 @@
+C:\Users\El Ales\source\repos\Tp Evaluativo\x64\Debug\Tp Evaluativo.exe
+C:\Users\El Ales\source\repos\Tp Evaluativo\x64\Debug\Tp Evaluativo.pdb
