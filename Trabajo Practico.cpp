@@ -182,7 +182,7 @@ int main() {
             puntuacionMaximaFueConGeneralaServida = true;
         }
         else {
-            if (puntos > mayorPuntuacion || puntuacionMaximaFueConGeneralaServida == false;) {
+            if (puntos > mayorPuntuacion || puntuacionMaximaFueConGeneralaServida == false) {
             mayorNombre = nombre;
             mayorPuntuacion = puntos;
             rondasMayorPuntuacion = ronda;
