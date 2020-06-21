@@ -15,10 +15,8 @@ int main() {
     int mayorrondas = 0;
     string mayornombre;
 
-    //aasdasddfhrtujgffgshrdyseryerdyer
-    //aasdasddfhrtujgffgshrdyseryerdyer
-    system("cls");
     //nuevo main.
+
     cosito[0] = "presione 1 para iniciar el juego en modo 1 jugador";
     cosito[1] = "presione 2 para iniciar el juego en modo 2 jugadores";
     cosito[2] = "presione 3 para ver las instrucciones";
