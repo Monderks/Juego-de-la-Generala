@@ -252,7 +252,6 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             ronda++;
             turno++;
             bool seguir = true;
-            srand(time(NULL));
             for (int i = 0; i < 5; i++) {
                 dados[i] = (rand() % 6) + 1;
             }
@@ -449,7 +448,6 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             ronda++;
             turno++;
             bool seguir = true;
-            srand(time(NULL));
             for (int i = 0; i < 5; i++) {
                 dados[i] = (rand() % 6) + 1;
             }

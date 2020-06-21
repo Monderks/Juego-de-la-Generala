@@ -9,6 +9,7 @@ using namespace std;
 #include "Menu.h"
 
 int main() {
+    srand((unsigned int)time(NULL));
     string cosito[5];
     int mayorPuntuacion = 0;
     int rondasMayorPuntuacion = 0;
