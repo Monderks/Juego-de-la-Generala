@@ -28,22 +28,42 @@ int main() {
     cosito[4] = "presione 0 para salir";
     switch (menu(cosito, 5)) {
     case '1': {
-
-        /*modoUnJugador( mayorPuntuacion,
-             rondasMayorPuntuacion,
-             menorRondas,
-             mayorNombre);*/
         
+       modoUnJugador( mayorPuntuacion, rondasMayorPuntuacion, mayorNombre, 
+           ganoConPrimeraGenerala, puntuacionMaximaFueConGeneralaServida, seguirEjecutandoJuego);
+        /*
         system("cls");
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
         bool primera_Generala = false;
         bool juegoterminado = false;
         int ronda = 0;
+        int cant_rondas=10;
+        char n;
         int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
         int dados[5];
         int j;
         string nombre = pedir_nombre();
-        while (ronda != 10 && juegoterminado == false) {
+        cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+        cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+        cin >> n;
+        if (n == '1') {
+            cout << "Ingresar la cantidad de rondas" << endl;
+            cin >> cant_rondas;
+        }
+        else {
+            while (n != '1' && n != '0') {
+                    cout << "por favor ingresar un digito valido." << endl;
+                    cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+                    cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+                    cin >> n;
+                    if (n == '1') {
+                        cout << "Ingresar la cantidad de rondas" << endl;
+                        cin >> cant_rondas;
+                    }
+            }
+        }
+        system("cls");
+        while (ronda != cant_rondas && juegoterminado == false) {
             int turno = 0;
             ronda++;
             turno++;
@@ -64,7 +84,7 @@ int main() {
                 for (int i = 0; i < 5; i++) {
                     cout << "[" << dados[i] << "]";
                 }
-                if (todosIguales(dados) && turno == 1) {
+                if (generala(dados) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
                     cout << endl;
@@ -77,7 +97,6 @@ int main() {
                     barrita();
                     system("pause");
                     system("cls");
-                    main();
                 }
                 else
                 {
@@ -174,6 +193,8 @@ int main() {
         //si es la primera ronada, menorRonda deberia tener valor-1
         //en caso de ser la primera ronda, la asigna como la ronda de mayor puntuacion
         //en caso de ser la partida con menor cantidad de rondas, tambien la asigna como partida con mayor puntuacion
+
+        
         if (ganoConPrimeraGenerala==true)
         {
             mayorNombre = nombre;
@@ -188,7 +209,7 @@ int main() {
             rondasMayorPuntuacion = ronda;
         }
 }
-
+       
         bool teclaPulsada = false;
         while (teclaPulsada == false) {
             if (_kbhit()) {
@@ -206,8 +227,7 @@ int main() {
                 }
                 teclaPulsada = true;
             }
-        }
-
+        }*/
         
     }
         break;
