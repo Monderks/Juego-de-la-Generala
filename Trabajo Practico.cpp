@@ -12,8 +12,7 @@ int main() {
     string cosito[5];
     int mayorPuntuacion = 0;
     int rondasMayorPuntuacion = 0;
-    int menorRondas=0;
-    bool primeraRondaJuego=true;
+    int menorRondas=-1;
     string mayorNombre;
 
     //nuevo main.
@@ -157,7 +156,7 @@ int main() {
 
         // ACA SE COMPARA LA PUNTUACION CON LA PUNTUACION MAYOR
 
-        if (primeraRondaJuego)
+        if (menorRondas=-1 || ronda<menorRondas)
         {
             menorRondas = ronda;
             mayorNombre = nombre;
