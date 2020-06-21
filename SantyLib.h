@@ -4,7 +4,8 @@
 #include <windows.h>
 #include <conio.h>
 #include <iostream>
-#include <stdlib.h>            
+#include <stdlib.h>   
+#include "Menu.h"
 
 //barrita de todo.
 void barrita() {
@@ -42,29 +43,36 @@ bool seguirLanzando() {
 }
 //pedir nombre de solitario.
 string pedir_nombre_unjugador() {
+    gotoxy(2, 5); barrita();
+    gotoxy(2, 7); barrita();
+    pintar_bordes();
     char nombre[100];
-    cout << "  Bienvenido al Juego solitario" << endl;
-    cout << "  Ingresar su nombre" << endl;
-    cin.getline(nombre,100);
-    system("cls");
-    return nombre;
-    }
-//pedir nombre de dos jugadores.
-string pedir_nombre_primer_jugador() {
-    char nombre[100];
-    cout << "  " << endl;
-    cout << "  Bienvenido al Juego de Dos Jugadores" << endl;
-    cout << "  " << endl;
-    cout << "  Ingresar el nombre del primer participante" << endl;
-    cin.getline(nombre, 100);
+    gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
+    gotoxy(2, 4); cout << "Ingresar su nombre" << endl;
+
+    gotoxy(2, 6); cin.getline(nombre, 100);
     system("cls");
     return nombre;
 }
-string pedir_nombre_segundo_jugador() {
+//pedir nombre de dos jugadores.
+string pedir_nombre_primer_jugador() {
+    gotoxy(2, 5); barrita();
+    gotoxy(2, 7); barrita();
+    pintar_bordes();
     char nombre[100];
-    cout << "  " << endl;
-    cout << "  Ingresar el nombre del segundo participante" << endl;
-    cin.getline(nombre, 100);
+    gotoxy(2, 2); cout << "  Bienvenido al Juego de Dos Jugadores" << endl;
+    gotoxy(2, 4); cout << "  Ingresar el nombre del primer participante" << endl;
+    gotoxy(2, 6); cin.getline(nombre, 100);
+    system("cls");
+    return nombre;
+    }
+string pedir_nombre_segundo_jugador() {
+    gotoxy(2, 5); barrita();
+    gotoxy(2, 7); barrita();
+    pintar_bordes();
+    char nombre[100];
+    gotoxy(2, 2); cout << "  Ingresar el nombre del segundo participante" << endl;
+    gotoxy(2, 6); cin.getline(nombre, 100);
     system("cls");
     return nombre;
 }
@@ -227,23 +235,32 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         int dados[5];
         int j;
         string nombre = pedir_nombre_unjugador();
-        cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-        cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-        cin >> n;
+        gotoxy(2, 5); barrita();
+        pintar_bordes();
+        gotoxy(2, 2); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+        gotoxy(2, 4); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+        gotoxy(2, 6); cin >> n;
         if (n == '1') {
-            cout << "Ingresar la cantidad de rondas" << endl;
-            cin >> cant_rondas;
+            gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
+            gotoxy(2, 10); cin >> cant_rondas;
         }
         else {
             while (n != '1' && n != '0') {
-                    cout << "por favor ingresar un digito valido." << endl;
-                    cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-                    cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-                    cin >> n;
-                    if (n == '1') {
-                        cout << "Ingresar la cantidad de rondas" << endl;
-                        cin >> cant_rondas;
-                    }
+                system("cls");
+                gotoxy(2, 7); barrita();
+                gotoxy(2, 9); barrita();
+                pintar_bordes();
+                gotoxy(2, 2); cout << "por favor ingresar un digito valido." << endl;
+                gotoxy(2, 4); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+                gotoxy(2, 6); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+                gotoxy(2, 8); cin >> n;
+                if (n == '1') {
+                    gotoxy(2, 11); barrita();
+                    gotoxy(2, 13); barrita();
+                    pintar_bordes();
+                    gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
+                    gotoxy(2, 12); cin >> cant_rondas;
+                }
             }
         }
         system("cls");

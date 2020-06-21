@@ -39,14 +39,14 @@ int main() {
         
     }
         break;
-    case '2':
+    case '2': {
         modoDosJugadores(mayorPuntuacion,
             rondasMayorPuntuacion,
             mayorNombre,
             seguirEjecutandoJuego,
             ganoConPrimeraGenerala,
             puntuacionMaximaFueConGeneralaServida);
-
+    }
         break;
     case '3':
         cout << "peruano3" << endl; 
