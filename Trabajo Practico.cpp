@@ -15,6 +15,7 @@ int main() {
     string mayorNombre;
     bool seguirEjecutandoJuego = true;
     bool ganoConPrimeraGenerala = false;
+    bool puntuacionMaximaFueConGeneralaServida = false;
 
     //nuevo main.
 
@@ -178,9 +179,10 @@ int main() {
             mayorNombre = nombre;
             mayorPuntuacion = puntos;
             rondasMayorPuntuacion = ronda;
+            puntuacionMaximaFueConGeneralaServida = true;
         }
         else {
-        if (puntos > mayorPuntuacion) {
+            if (puntos > mayorPuntuacion || puntuacionMaximaFueConGeneralaServida == false;) {
             mayorNombre = nombre;
             mayorPuntuacion = puntos;
             rondasMayorPuntuacion = ronda;
