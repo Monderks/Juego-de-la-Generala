@@ -52,6 +52,9 @@ int main() {
         cout << "peruano3" << endl; 
         break;
     case '4': {
+
+        //mostrarMayorPuntuacion(mayorNombre, mayorPuntuacion, rondasMayorPuntuacion, seguirEjecutandoJuego);
+        
         system("cls");
         barrita();
         cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
@@ -67,10 +70,11 @@ int main() {
                 char tecla = _getch();
                 if (tecla == '1') {
                     system("cls");
-                    seguirEjecutandoJuego=false;
+                    seguirEjecutandoJuego=true;
                 }
                 else if (tecla == '2') {
-                    system("exit");
+                    system("cls");
+                    seguirEjecutandoJuego = false;
                 }
                 else {
                     cout << "Tecla invalida, hasta luego" << endl;

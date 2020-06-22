@@ -43,6 +43,7 @@ bool seguirLanzando() {
 }
 //pedir nombre de solitario.
 string pedir_nombre_unjugador() {
+    system("cls");
     gotoxy(2, 5); barrita();
     gotoxy(2, 7); barrita();
     pintar_bordes();
@@ -50,7 +51,8 @@ string pedir_nombre_unjugador() {
     gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
     gotoxy(2, 4); cout << "Ingresar su nombre" << endl;
 
-    gotoxy(2, 6); cin.getline(nombre, 100);
+    //gotoxy(2, 6); cin.getline(nombre, 100); //con esto se bugeaba y despues de la primera partida no volvia a pedir el nombre
+    gotoxy(2, 6); cin >> nombre;
     system("cls");
     return nombre;
 }
@@ -398,7 +400,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             puntuacionMaximaFueConGeneralaServida = true;
         }
         else {
-            if (puntos > mayorPuntuacion || puntuacionMaximaFueConGeneralaServida == false) {
+            if (puntos > mayorPuntuacion && puntuacionMaximaFueConGeneralaServida == false) {
             mayorNombre = nombre;
             mayorPuntuacion = puntos;
             rondasMayorPuntuacion = ronda;
@@ -593,7 +595,7 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             puntuacionMaximaFueConGeneralaServida = true;
         }
         else {
-            if (puntos > mayorPuntuacion || puntuacionMaximaFueConGeneralaServida == false) {
+            if (puntos > mayorPuntuacion && puntuacionMaximaFueConGeneralaServida == false) {
                 mayorNombre = nombre;
                 mayorPuntuacion = puntos;
                 rondasMayorPuntuacion = ronda;
@@ -619,4 +621,34 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             }
         }
     }
-
+void mostrarMayorPuntuacion(string mayorNombre,int mayorPuntuacion,int rondasMayorPuntuacion,bool &seguirEjecutandoJuego) {
+    system("cls");
+    barrita();
+    cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
+    barrita();
+    cout << "Nombre= " << mayorNombre << endl;
+    cout << "Su puntuacion es= " << mayorPuntuacion << endl;
+    cout << "En la cantidad de rondas= " << rondasMayorPuntuacion << endl;
+    barrita();
+    cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
+    bool teclaPulsada = false;
+    while (teclaPulsada == false) {
+        if (_kbhit()) {
+            char tecla = _getch();
+            if (tecla == '1') {
+                system("cls");
+                seguirEjecutandoJuego = true;
+            }
+            else if (tecla == '2') {
+                system("cls");
+                seguirEjecutandoJuego = false;
+            }
+            else {
+                cout << "Tecla invalida, hasta luego" << endl;
+                system("pause");
+                seguirEjecutandoJuego = false;
+            }
+            teclaPulsada = true;
+        }
+    }
+}
