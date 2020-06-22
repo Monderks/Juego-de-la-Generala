@@ -61,10 +61,10 @@ string pedir_nombre_primer_jugador() {
     gotoxy(2, 5); barrita();
     gotoxy(2, 7); barrita();
     pintar_bordes();
-    char nombre[100];
+    string nombre;
     gotoxy(2, 2); cout << "  Bienvenido al Juego de Dos Jugadores" << endl;
     gotoxy(2, 4); cout << "  Ingresar el nombre del primer participante" << endl;
-    gotoxy(2, 6); cin.getline(nombre, 100);
+    gotoxy(2, 6); cin >> nombre;
     system("cls");
     return nombre;
     }
@@ -72,9 +72,9 @@ string pedir_nombre_segundo_jugador() {
     gotoxy(2, 5); barrita();
     gotoxy(2, 7); barrita();
     pintar_bordes();
-    char nombre[100];
+    string nombre;
     gotoxy(2, 2); cout << "  Ingresar el nombre del segundo participante" << endl;
-    gotoxy(2, 6); cin.getline(nombre, 100);
+    gotoxy(2, 6); cin >> nombre;
     system("cls");
     return nombre;
 }
@@ -431,46 +431,74 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string &
 bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaximaFueConGeneralaServida) {
 
         system("cls");
-        int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
+        int puntaje=0;   //PUNTAJE ES LA PUNTUACION POR RONDA
+        int puntaje2=0;
         bool primera_Generala = false;
         bool juegoterminado = false;
         int ronda = 0;
         int cant_rondas = 10;
         char n;
         int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
+        int puntos2 = 0;
         int dados[5];
+        int dados2[5];
         int j;
         string nombre = pedir_nombre_primer_jugador();
         string nombre2 = pedir_nombre_segundo_jugador();
-        cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-        cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-        cin >> n;
+        gotoxy(2, 5); barrita();
+        pintar_bordes();
+        gotoxy(2, 2); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+        gotoxy(2, 4); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+        gotoxy(2, 6); cin >> n;
         if (n == '1') {
-            cout << "Ingresar la cantidad de rondas" << endl;
-            cin >> cant_rondas;
+            gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
+            gotoxy(2, 10); cin >> cant_rondas;
         }
         else {
             while (n != '1' && n != '0') {
-                cout << "por favor ingresar un digito valido." << endl;
-                cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-                cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-                cin >> n;
+                system("cls");
+                gotoxy(2, 7); barrita();
+                gotoxy(2, 9); barrita();
+                pintar_bordes();
+                gotoxy(2, 2); cout << "por favor ingresar un digito valido." << endl;
+                gotoxy(2, 4); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+                gotoxy(2, 6); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+                gotoxy(2, 8); cin >> n;
                 if (n == '1') {
-                    cout << "Ingresar la cantidad de rondas" << endl;
-                    cin >> cant_rondas;
+                    gotoxy(2, 11); barrita();
+                    gotoxy(2, 13); barrita();
+                    pintar_bordes();
+                    gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
+                    gotoxy(2, 12); cin >> cant_rondas;
                 }
             }
         }
         system("cls");
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+
         while (ronda != cant_rondas && juegoterminado == false) {
             int turno = 0;
             ronda++;
             turno++;
             bool seguir = true;
+            //carga los dados del jugador 1
             for (int i = 0; i < 5; i++) {
                 dados[i] = (rand() % 6) + 1;
             }
-             while (turno < 3 && seguir) {
+            //dados los dados del jugador 2
+            for (int i = 0; i < 5; i++) {
+                dados2[i] = (rand() % 6) + 1;
+            }
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //while  turno 1
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            while (turno < 3 && seguir) {
                 puntaje = 0;
                 turno++;
                 cout << "Turno de: " << nombre << "            |            " << "Ronda Numero:  " << ronda << "           |           " << "Puntaje Total: " << puntos << endl;
@@ -518,11 +546,14 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                         }
                     }
                 }
-
+                
 
                 system("cls");
             }
-            //termina el while por turno
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //termina while por turno1
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
@@ -569,35 +600,191 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             }
             cout << "Ronda Numero= " << ronda << endl;
             barrita();
-            cout << "Nombre= " << nombre << endl;
+            cout << "Proximo turno es de= " << nombre2 << endl;
             barrita();
-            cout << "Tu puntaje de la ronda es= " << puntaje << endl;
+            cout << "Puntaje de= " << nombre << " : " << puntos << endl;
+            cout << "Puntaje de= " << nombre2 << " : " << puntos2 << endl;
             barrita();
             system("pause");
             system("cls");
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //while  turno 2
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            seguir = true;
+            turno = 1;
+            while (turno < 3 && seguir) {
+                puntaje2 = 0;
+                turno++;
+                cout << "Turno de: " << nombre2 << "            |            " << "Ronda Numero:  " << ronda << "           |           " << "Puntaje Total: " << puntos2 << endl;
+                barrita();
+                cout << "Lanzamiento Numero: " << turno;
+                cout << endl;
+                barrita();
+                for (int i = 0; i < 5; i++) {
+                    cout << "[" << dados2[i] << "]";
+                }
+                if (generala(dados2) && turno == 1) {
+                    ganoConPrimeraGenerala = true;
+                    cout << endl;
+                    cout << endl;
+                    barrita();
+                    cout << "Hiciste la generala servida!!" << endl;
+                    barrita();
+                    cout << "GANASTE EL JUEGO!!" << endl;
+                    cout << "FELICIDADES!!" << endl;
+                    juegoterminado = true;
+                    barrita();
+                    system("pause");
+                    system("cls");
+
+                }
+                else
+                {
+                    cout << endl;
+                    barrita();
+                    cout << endl;
+                    if (!seguirLanzando())
+                    {
+                        seguir = false;
+                    }
+                    else
+                    {
+                        cout << "cuantos dados? ";
+                        cin >> j;
+                        cout << endl;
+                        for (int i = 0; i < j; i++) {
+                            int f;
+                            cout << "cual dado desea tirar? ";
+                            cin >> f;
+                            dados2[f - 1] = rand() % 6 + 1;
+                        }
+                    }
+                }
+                
+
+                system("cls");
+            }
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //termina while por turno2
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+
+            cout << endl;
+            cout << "los dados quedaron asi" << endl;
+            barrita();
+            for (int i = 0; i < 5; i++) {
+                cout << "[" << dados2[i] << "]";
+            }
+            cout << endl;
+            barrita();
+            if (generala(dados2) == true && primera_Generala == false) {
+                puntaje2 = puntaje2 + 50;
+                puntos2 = puntos2 + puntaje2;
+                primera_Generala = true;
+            }
+            else {
+                if (generala(dados2) == true) {
+                    puntaje2 = puntaje2 + 100;
+                    puntos2 = puntos2 + puntaje2;
+                }
+                else {
+                    if (poker(dados2) == true) {
+                        puntaje2 = puntaje2 + 40;
+                        puntos2 = puntos2 + puntaje2;
+                    }
+                    else {
+                        if (full(dados2) == true) {
+                            puntaje2 = puntaje2 + 30;
+                            puntos2 = puntos2 + puntaje2;
+                        }
+                        else {
+                            if (escalera(dados2) == true) {
+                                puntaje2 = puntaje2 + 25;
+                                puntos2 = puntos2 + puntaje2;
+                            }
+                            else {
+                                puntaje2 = puntaje2 + trio_duo_mayor(dados2);
+                                puntos2 = puntos2 + puntaje2;
+                            }
+
+
+                        }
+                    }
+                }
+            }
+            cout << "Ronda Numero= " << ronda << endl;
+            barrita();
+            cout << "Proximo turno es de= " << nombre << endl;
+            barrita();
+            cout << "Puntaje de= " << nombre << " : " << puntos << endl;
+            cout << "Puntaje de= " << nombre2 << " : " << puntos2 << endl;
+            barrita();
+            system("pause");
+            system("cls");
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
+            //-------------------------------------------------------------------------------------------
 
         }//termino de while
-
+        
         barrita();
-        cout << "Terminaste tu partida de Generala solitario" << endl;
+        cout << "Termino la partida de Generala Dos Jugadores" << endl;
         barrita();
-        cout << "Puntos totales ganados= " << puntos << endl;
+        cout << "Jugador= " << nombre << endl;
+        cout << "Puntos totales ganados del primer jugador= " << puntos << endl;
+        barrita();
+        cout << "Jugador= " << nombre2 << endl;
+        cout << "Puntos totales ganados del segundo jugador= " << puntos2 << endl;
+        barrita();
         cout << "Rondas totales= " << ronda << endl;
         barrita();
         barrita();
+
+        system("pause");
+        system("cls");
+        string nombre_ganador2p;
+        int puntuacion_ganador2p;
+
+        if (puntos > puntos2) {
+            cout << "El ganador es el Jugador: " << nombre << endl;
+            cout << "Felicidades" << endl;
+            nombre_ganador2p = nombre;
+            puntuacion_ganador2p = puntos;
+        }
+        else if (puntos == puntos2) {
+            cout << "Hubo un empate" << endl;
+            cout << "Jueguense otra y denme de comer por favor" << endl;
+            nombre_ganador2p = nombre+nombre2;
+            puntuacion_ganador2p = puntos;
+        }
+        else {
+            cout << "El ganador es el Jugador: " << nombre2 << endl;
+            cout << "Felicidades" << endl;
+            nombre_ganador2p = nombre2;
+            puntuacion_ganador2p = puntos2;
+        }
+
+        barrita();
+
         cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
 
         if (ganoConPrimeraGenerala == true)
         {
-            mayorNombre = nombre;
-            mayorPuntuacion = puntos;
+            mayorNombre = nombre_ganador2p;
+            mayorPuntuacion = puntuacion_ganador2p;
             rondasMayorPuntuacion = ronda;
             puntuacionMaximaFueConGeneralaServida = true;
         }
         else {
-            if (puntos > mayorPuntuacion && puntuacionMaximaFueConGeneralaServida == false) {
-                mayorNombre = nombre;
-                mayorPuntuacion = puntos;
+            if (puntuacion_ganador2p > mayorPuntuacion && puntuacionMaximaFueConGeneralaServida == false) {
+                mayorNombre = nombre_ganador2p;
+                mayorPuntuacion = puntuacion_ganador2p;
                 rondasMayorPuntuacion = ronda;
             }
         }
@@ -621,6 +808,7 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             }
         }
     }
+
 void mostrarMayorPuntuacion(string mayorNombre,int mayorPuntuacion,int rondasMayorPuntuacion,bool &seguirEjecutandoJuego) {
     system("cls");
     barrita();
@@ -652,3 +840,12 @@ void mostrarMayorPuntuacion(string mayorNombre,int mayorPuntuacion,int rondasMay
         }
     }
 }
+
+
+
+
+
+
+
+
+
