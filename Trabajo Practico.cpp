@@ -48,8 +48,12 @@ int main() {
             puntuacionMaximaFueConGeneralaServida);
     }
         break;
-    case '3':
-        cout << "peruano3" << endl; 
+    case '3': {
+        system("cls");
+        instrucciones();
+        system("pause");
+        system("cls");
+    }
         break;
     case '4': {
 
