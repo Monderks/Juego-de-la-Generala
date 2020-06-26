@@ -3,10 +3,14 @@
 #include <cstdio>
 #include <ctime>
 
+
 using namespace std;
 
 #include "SantyLib.h"
 #include "Menu.h"
+#include "Dados.h"
+
+
 
 int main() {
     srand((unsigned int)time(NULL));
@@ -99,6 +103,9 @@ int main() {
 
     //termina el while infinito
     }
+    
+
+
 
     return 0;
 }

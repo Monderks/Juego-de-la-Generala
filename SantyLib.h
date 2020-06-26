@@ -5,6 +5,7 @@
 #include <iostream>
 #include <stdlib.h>   
 #include "Menu.h"
+#include "Dados.h"
 void barrita() {
     cout << "------------------------------------------------------------------------------------------------------------------------"<<endl;
 }
@@ -223,6 +224,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                 }
             }
         }
+        
         system("cls");
         while (ronda != cant_rondas && juegoterminado == false) {
             int turno = 0;
@@ -240,10 +242,17 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                 barrita();
                 cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();
+                barrita();/*
                 for (int i = 0; i < 5; i++) {
                     cout << "[" << dados[i] << "]";
-                }
+                }*/
+
+                //---------------------------------------------
+                dibujar_dados(dados);
+                cout << endl;
+                cout << endl;
+                //---------------------------------------------
+
                 if (generala(dados) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
@@ -282,17 +291,21 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                     }
                 }
                 
-
                 system("cls");
             }
             //termina el while por turno
+            
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
-            barrita();
+            barrita();/*
             for (int i = 0; i < 5; i++) {
                 cout << "[" << dados[i] << "]";
-            }
+            }*/
+            //---------------------------------------------
+            dibujar_dados(dados);
+            cout << endl;
+            //---------------------------------------------
             cout << endl;
             barrita();
             if (generala(dados) == true) {
@@ -464,10 +477,14 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                 barrita();
                 cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();
+                barrita();/*
                 for (int i = 0; i < 5; i++) {
                     cout << "[" << dados[i] << "]";
-                }
+                }*/
+                //---------------------------------------------
+                dibujar_dados(dados);
+                cout << endl;
+                //---------------------------------------------
                 if (generala(dados) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
@@ -516,10 +533,14 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
-            barrita();
+            barrita();/*
             for (int i = 0; i < 5; i++) {
                 cout << "[" << dados[i] << "]";
-            }
+            }*/
+            //-------------------------------------------------------------------------------------------
+            dibujar_dados(dados);
+            cout << endl;
+            //-------------------------------------------------------------------------------------------
             cout << endl;
             barrita();
             if (generala(dados) == true) {
@@ -574,10 +595,14 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                 barrita();
                 cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();
+                barrita();/*
                 for (int i = 0; i < 5; i++) {
                     cout << "[" << dados2[i] << "]";
-                }
+                }*/
+                //-------------------------------------------------------------------------------------------
+                dibujar_dados(dados);
+                cout << endl;
+                //-------------------------------------------------------------------------------------------
                 if (generala(dados2) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
@@ -629,10 +654,14 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
-            barrita();
+            barrita();/*
             for (int i = 0; i < 5; i++) {
                 cout << "[" << dados2[i] << "]";
-            }
+            }*/
+            //-------------------------------------------------------------------------------------------
+            dibujar_dados(dados);
+            cout << endl;
+            //-------------------------------------------------------------------------------------------
             cout << endl;
             barrita();
             if (generala(dados2) == true) {
