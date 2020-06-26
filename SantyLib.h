@@ -37,28 +37,20 @@ bool seguirLanzando() {
     }
 
 }
-string pedir_nombre(int modojuego_singular, int modojuego_duo) {
-    system("cls");
-    gotoxy(2, 5); barrita();
-    gotoxy(2, 7); barrita();
-    pintar_bordes();
+string pedir_nombre(bool nombre_primer_jugador) {
     string nombre;
-    if (modojuego_singular == 1) {
-        gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
-        gotoxy(2, 4); cout << "Ingresar su nombre" << endl;
+     
+    if (nombre_primer_jugador == true) {
+        gotoxy(2, 4); cout << "Ingresar el nombre del jugador" << endl;
         gotoxy(2, 6); cin >> nombre;
         return nombre;
     }
-    else {
-        if (modojuego_duo == 1) {
-            gotoxy(2, 2); cout << "Bienvenido al Juego de dos Jugadores" << endl;
-            gotoxy(2, 4); cout << "Ingresar el nombre del primer jugador" << endl;
+    if (nombre_primer_jugador == false) {
+            gotoxy(2, 4); cout << "Ingresar el nombre del segundo jugador" << endl;
             gotoxy(2, 6); cin >> nombre;
             return nombre;
         }
-    }
-    return nombre;
-    }
+    }  
 int repetidos_Dado(int dados[], int n) {
     int dado = 0;
     for (int i = 0; i < 5; i ++ ) {
@@ -186,11 +178,9 @@ int trio_duo_mayor(int dados[]) {
 //Un jugador.
 void modoUnJugador(int &mayorPuntuacion,int &rondasMayorPuntuacion,string &mayorNombre,
 bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaFueConGeneralaServida){
-    int modojuego_singular = 1;
-    int modojuego_duo = 1;
+    bool modojuego_singular = true;
     system("cls");
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
-        bool primera_Generala = false;
         bool juegoterminado = false;
         int ronda = 0;
         int cant_rondas=10;
@@ -198,7 +188,12 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
         int dados[5];
         int j;
-        string nombre = pedir_nombre(modojuego_singular,modojuego_duo);
+        system("cls");
+        gotoxy(2, 5); barrita();
+        gotoxy(2, 7); barrita();
+        pintar_bordes();
+        gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
+        string nombre = pedir_nombre(true);
         system("cls");
         gotoxy(2, 5); barrita();
         pintar_bordes();
@@ -300,18 +295,12 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             }
             cout << endl;
             barrita();
-            if (generala(dados) == true && primera_Generala == false) {
+            if (generala(dados) == true) {
                 puntaje = puntaje + 50;
                 puntos = puntos + puntaje;
-                primera_Generala = true;
-            }
-            else {
-                if (generala(dados) == true) {
-                    puntaje = puntaje + 100;
-                    puntos = puntos + puntaje;
                 }
-                else {
-                    if (poker(dados) == true) {
+            else {
+                if (poker(dados) == true) {
                         puntaje = puntaje + 40;
                         puntos = puntos + puntaje;
                     }
@@ -334,7 +323,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                         }
                     }
                 }
-            }
+            
             cout << "Ronda Numero= " << ronda << endl;
             barrita();
             cout << "Nombre= " << nombre << endl;
@@ -391,12 +380,10 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
 //dos jugadores.
 void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string & mayorNombre,
 bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaximaFueConGeneralaServida) {
-    int modojuego_singular = 0;
-    int modojuego_duo = 1;;
+    bool modojuego_singular = false;
     system("cls");
         int puntaje=0;   //PUNTAJE ES LA PUNTUACION POR RONDA
         int puntaje2=0;
-        bool primera_Generala = false;
         bool juegoterminado = false;
         int ronda = 0;
         int cant_rondas = 10;
@@ -406,8 +393,16 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
         int dados[5];
         int dados2[5];
         int j;
-        string nombre = pedir_nombre(modojuego_singular, modojuego_duo);
-        string nombre2 = pedir_nombre(modojuego_singular, modojuego_duo);
+        gotoxy(2, 5); barrita();
+        gotoxy(2, 7); barrita();
+        pintar_bordes();
+        gotoxy(2, 2); cout << "Bienvenido al Juego de dos jugadores" << endl;
+        string nombre = pedir_nombre(true);
+        system("cls");
+        gotoxy(2, 5); barrita();
+        gotoxy(2, 7); barrita();
+        pintar_bordes();
+        string nombre2 = pedir_nombre(false);
         system("cls");
         gotoxy(2, 5); barrita();
         pintar_bordes();
@@ -527,18 +522,12 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             }
             cout << endl;
             barrita();
-            if (generala(dados) == true && primera_Generala == false) {
+            if (generala(dados) == true) {
                 puntaje = puntaje + 50;
                 puntos = puntos + puntaje;
-                primera_Generala = true;
-            }
-            else {
-                if (generala(dados) == true) {
-                    puntaje = puntaje + 100;
-                    puntos = puntos + puntaje;
                 }
-                else {
-                    if (poker(dados) == true) {
+            else {
+                if (poker(dados) == true) {
                         puntaje = puntaje + 40;
                         puntos = puntos + puntaje;
                     }
@@ -561,7 +550,7 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                         }
                     }
                 }
-            }
+            
             cout << "Ronda Numero= " << ronda << endl;
             barrita();
             cout << "Proximo turno es de= " << nombre2 << endl;
@@ -646,18 +635,12 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             }
             cout << endl;
             barrita();
-            if (generala(dados2) == true && primera_Generala == false) {
+            if (generala(dados2) == true) {
                 puntaje2 = puntaje2 + 50;
                 puntos2 = puntos2 + puntaje2;
-                primera_Generala = true;
             }
             else {
-                if (generala(dados2) == true) {
-                    puntaje2 = puntaje2 + 100;
-                    puntos2 = puntos2 + puntaje2;
-                }
-                else {
-                    if (poker(dados2) == true) {
+                if (poker(dados2) == true) {
                         puntaje2 = puntaje2 + 40;
                         puntos2 = puntos2 + puntaje2;
                     }
@@ -680,7 +663,7 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                         }
                     }
                 }
-            }
+            
             cout << "Ronda Numero= " << ronda << endl;
             barrita();
             cout << "Proximo turno es de= " << nombre << endl;
