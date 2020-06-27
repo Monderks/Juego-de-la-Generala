@@ -116,9 +116,9 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             while (turno < 3 && seguir) {
                 puntaje = 0;
                 turno++;
-                gotoxy(2; 1); cout << "Turno de: " << nombre << "|";
-                gotoxy(2; 5); cout << "Ronda Numero " << ronda << "|";
-                gotoxy(2; 9); cout << "Puntaje Total: " << puntos;
+                gotoxy(2, 1); cout << "Turno de: " << nombre << "|";
+                gotoxy(2, 5); cout << "Ronda Numero " << ronda << "|";
+                gotoxy(2, 9); cout << "Puntaje Total: " << puntos << endl;
                 barrita();
                 cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
