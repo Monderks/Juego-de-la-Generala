@@ -17,7 +17,6 @@ int repetidos_Dado(int dados[], int n) {
     }
     return dado;
 }
-
 bool full(int dados[]) {
     int bandera = 0;
     int bandera1 = 0;

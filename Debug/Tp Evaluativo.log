@@ -1,6 +1,0 @@
-﻿  Trabajo Practico.cpp
-C:\Users\El Ales\source\repos\Tp Evaluativo\SantyLib.h(8,5): error C2561: 'tirarDado': la función debe devolver un valor
-C:\Users\El Ales\source\repos\Tp Evaluativo\SantyLib.h(5): message : vea la declaración de 'tirarDado'
-C:\Users\El Ales\source\repos\Tp Evaluativo\Menu.h(15,5): warning C4551: la llamada a la función no tiene lista de argumentos
-C:\Users\El Ales\source\repos\Tp Evaluativo\Trabajo Practico.cpp(37,9): error C2561: 'main': la función debe devolver un valor
-C:\Users\El Ales\source\repos\Tp Evaluativo\Trabajo Practico.cpp(19): message : vea la declaración de 'main'

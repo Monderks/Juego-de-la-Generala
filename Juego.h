@@ -1,4 +1,6 @@
 #pragma once
+
+
 #include <stdio.h>
 #include <windows.h>
 #include <conio.h>
@@ -9,11 +11,11 @@
 #include "Jugadas.h"
 
 void barrita() {
-    cout << "------------------------------------------------------------------------------------------------------------------------"<<endl;
+    cout << "---------------------------------------------------------------------------------------------------------------------"<<endl;
 }
 bool seguirLanzando() {
     char j;
-    cout << "Desea seguir lanzando? (s / n) ";
+    gotoxy(2, 16); cout << "Desea seguir lanzando? (s / n) ";
     cin >> j;
     cout << endl;
     if (j == 's' || j == 'S') {
@@ -23,11 +25,11 @@ bool seguirLanzando() {
         return false;
     }
     else {
-        while (j != 's' || j != 'S' || j != 'n' || j != 'N') {
+        while ((j != 's' || j != 'S') || (j != 'n' || j != 'N')) {
             barrita();
-            cout << "Esa opcion no es aceptable." << endl << "por favor, volver a ingresar un digito valido." << endl;
+            gotoxy(2, 16); cout << "Esa opcion no es aceptable." << endl << "por favor, volver a ingresar un digito valido." << endl;
             barrita();
-            cout << "Desea seguir lanzando? (s / n) ";
+            gotoxy(2, 17); cout << "Desea seguir lanzando? (s / n) ";
             cin >> j;
             cout << endl;
             if (j == 's' || j == 'S') {
@@ -116,14 +118,15 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             while (turno < 3 && seguir) {
                 puntaje = 0;
                 turno++;
-                gotoxy(2, 1); cout << "Turno de: " << nombre << "|";
-                gotoxy(2, 5); cout << "Ronda Numero " << ronda << "|";
-                gotoxy(2, 9); cout << "Puntaje Total: " << puntos << endl;
-                barrita();
-                cout << "Lanzamiento Numero: " << turno;
+                pintar_bordes();
+                gotoxy(2, 2); cout << "Turno de: " << nombre;
+                gotoxy(50, 2); cout << "Ronda Numero " << ronda;
+                gotoxy(100, 2); cout << "Puntaje Total: " << puntos << endl;
+                gotoxy(2, 3); barrita();
+                gotoxy(2, 4); cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();
-                dibujar_dados(dados);
+                gotoxy(2, 5); barrita();
+                gotoxy(2, 6); dibujar_dados(dados);
                 cout << endl;
                 cout << endl;
                 
@@ -131,7 +134,9 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                     ganoConPrimeraGenerala = true;
                     cout << endl;
                     cout << endl;
+                    system("cls");
                     pintar_bordes();
+                    //corregir el cuadrito
                     gotoxy(2, 7); barrita();
                     gotoxy(2, 8); cout << "Hiciste la generala servida!!" << endl;
                     gotoxy(2, 9); barrita();
@@ -139,14 +144,14 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                     gotoxy(2, 11); cout << "FELICIDADES!!" << endl;
                     juegoterminado = true;
                     gotoxy(2, 12); barrita();
-                    system("pause");
+                    gotoxy(2, 13); system("pause");
                     system("cls");
 
                 }
                 else
                 {
                     cout << endl;
-                    barrita();
+                    gotoxy(2, 15); barrita();
                     cout << endl;
                     if (!seguirLanzando())
                     {
@@ -154,12 +159,14 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                     }
                     else
                     {
-                        cout << "cuantos dados? ";
+                        gotoxy(2, 18); cout << "cuantos dados? ";
                         cin >> j;
                         cout << endl;
+                        int g = 19;
                         for (int i = 0; i < j; i++) {
                             int f;
-                            cout << "cual dado desea tirar? ";
+                            gotoxy(2, g); cout << "cual dado desea tirar? ";
+                            g++;
                             cin >> f;
                             dados[f - 1] = rand() % 6 + 1;
                         }
@@ -169,20 +176,13 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                 system("cls");
             }
             //termina el while por turno
-            
-
-            cout << endl;
-            cout << "los dados quedaron asi" << endl;
-            barrita();/*
-            for (int i = 0; i < 5; i++) {
-                cout << "[" << dados[i] << "]";
-            }*/
-            //---------------------------------------------
+            pintar_bordes();
+            gotoxy(47, 2); cout << "los dados quedaron asi" << endl;
+            gotoxy(2, 3); barrita();
             dibujar_dados(dados);
             cout << endl;
-            //---------------------------------------------
             cout << endl;
-            barrita();
+            gotoxy(2, 13); barrita();
             if (generala(dados) == true) {
                 puntaje = puntaje + 50;
                 puntos = puntos + puntaje;
@@ -211,26 +211,25 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
                         }
                     }
                 }
-            
-            cout << "Ronda Numero= " << ronda << endl;
-            barrita();
-            cout << "Nombre= " << nombre << endl;
-            barrita();
-            cout << "Tu puntaje de la ronda es= " << puntaje << endl;
-            barrita();
-            system("pause");
+            gotoxy(2, 14); cout << "Ronda Numero= " << ronda << endl;
+            gotoxy(2, 15); barrita();
+            gotoxy(2, 16); cout << "Nombre= " << nombre << endl;
+            gotoxy(2, 17); barrita();
+            gotoxy(2, 18); cout << "Tu puntaje de la ronda es= " << puntaje << endl;
+            gotoxy(2, 19); barrita();
+            gotoxy(2, 20); system("pause");
             system("cls");
 
         }//termino de while
-
-        barrita();
-        cout << "Terminaste tu partida de Generala solitario" << endl;
-        barrita();
-        cout << "Puntos totales ganados= " << puntos << endl;
-        cout << "Rondas totales= " << ronda << endl;
-        barrita();
-        barrita();
-        cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
+        pintar_bordes();
+        gotoxy(2, 2); barrita();
+        gotoxy(36, 3); cout << "Terminaste tu partida de Generala solitario" << endl;
+        gotoxy(2, 4); barrita();
+        gotoxy(44, 5); cout << "Puntos totales ganados= " << puntos << endl;
+        gotoxy(44, 6); cout << "Rondas totales= " << ronda << endl;
+        gotoxy(2, 7); barrita();
+        gotoxy(2, 8); barrita();
+        gotoxy(2, 20); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
 
        if (ganoConPrimeraGenerala==true)
         {
@@ -348,18 +347,18 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
             while (turno < 3 && seguir) {
                 puntaje = 0;
                 turno++;
-                cout << "Turno de: " << nombre << "            |            " << "Ronda Numero:  " << ronda << "           |           " << "Puntaje Total: " << puntos << endl;
-                barrita();
-                cout << "Lanzamiento Numero: " << turno;
+                pintar_bordes();
+                gotoxy(2, 2); cout << "Turno de: " << nombre;
+                gotoxy(50, 2); cout << "Ronda Numero " << ronda;
+                gotoxy(100, 2); cout << "Puntaje Total: " << puntos << endl;
+                gotoxy(2, 3); barrita();
+                gotoxy(2, 4); cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();/*
-                for (int i = 0; i < 5; i++) {
-                    cout << "[" << dados[i] << "]";
-                }*/
-                //---------------------------------------------
-                dibujar_dados(dados);
+                gotoxy(2, 5); barrita();
+                gotoxy(2, 6); dibujar_dados(dados);
                 cout << endl;
-                //---------------------------------------------
+                cout << endl; 
+                
                 if (generala(dados) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
@@ -408,11 +407,7 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
-            barrita();/*
-            for (int i = 0; i < 5; i++) {
-                cout << "[" << dados[i] << "]";
-            }*/
-            //-------------------------------------------------------------------------------------------
+            barrita();
             dibujar_dados(dados);
             cout << endl;
             //-------------------------------------------------------------------------------------------
@@ -470,14 +465,10 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                 barrita();
                 cout << "Lanzamiento Numero: " << turno;
                 cout << endl;
-                barrita();/*
-                for (int i = 0; i < 5; i++) {
-                    cout << "[" << dados2[i] << "]";
-                }*/
-                //-------------------------------------------------------------------------------------------
+                barrita();
                 dibujar_dados(dados);
                 cout << endl;
-                //-------------------------------------------------------------------------------------------
+
                 if (generala(dados2) && turno == 1) {
                     ganoConPrimeraGenerala = true;
                     cout << endl;
@@ -515,8 +506,6 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
                         }
                     }
                 }
-                
-
                 system("cls");
             }
             //-------------------------------------------------------------------------------------------
@@ -529,14 +518,9 @@ bool& seguirEjecutandoJuego, bool& ganoConPrimeraGenerala, bool& puntuacionMaxim
 
             cout << endl;
             cout << "los dados quedaron asi" << endl;
-            barrita();/*
-            for (int i = 0; i < 5; i++) {
-                cout << "[" << dados2[i] << "]";
-            }*/
-            //-------------------------------------------------------------------------------------------
+            barrita();
             dibujar_dados(dados);
             cout << endl;
-            //-------------------------------------------------------------------------------------------
             cout << endl;
             barrita();
             if (generala(dados2) == true) {

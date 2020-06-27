@@ -17,7 +17,7 @@ void marco_dado(int x, int y) {
 void dibujar_dados(int dados[]) {
     cout << endl;
     int y;
-    int x = 1;
+    int x = 30;
     CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
     HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
     if (!GetConsoleScreenBufferInfo(hStd, &screenBufferInfo))

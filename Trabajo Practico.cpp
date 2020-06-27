@@ -20,11 +20,7 @@ int main() {
     bool seguirEjecutandoJuego = true;
     bool ganoConPrimeraGenerala = false;
     bool puntuacionMaximaFueConGeneralaServida = false;
-
-    //nuevo main.
-
     while (seguirEjecutandoJuego) {
-
     cosito[0] = "presione 1 para iniciar el juego en modo 1 jugador";
     cosito[1] = "presione 2 para iniciar el juego en modo 2 jugadores";
     cosito[2] = "presione 3 para ver las instrucciones";
@@ -63,14 +59,15 @@ int main() {
         //mostrarMayorPuntuacion(mayorNombre, mayorPuntuacion, rondasMayorPuntuacion, seguirEjecutandoJuego);
         
         system("cls");
-        barrita();
-        cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
-        barrita();
-        cout << "Nombre= " << mayorNombre << endl;
-        cout << "Su puntuacion es= " << mayorPuntuacion << endl;
-        cout << "En la cantidad de rondas= " << rondasMayorPuntuacion << endl;
-        barrita();
-        cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
+        pintar_bordes();
+        gotoxy(2, 2); barrita();
+        gotoxy(30, 3); cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
+        gotoxy(2, 4); barrita();
+        gotoxy(48, 5); cout << "Nombre= " << mayorNombre << endl;
+        gotoxy(48, 6); cout << "Su puntuacion es= " << mayorPuntuacion << endl;
+        gotoxy(48, 7); cout << "En la cantidad de rondas= " << rondasMayorPuntuacion << endl;
+        gotoxy(2, 8); barrita();
+        gotoxy(2, 20); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
         bool teclaPulsada = false;
         while (teclaPulsada == false) {
             if (_kbhit()) {
@@ -84,8 +81,8 @@ int main() {
                     seguirEjecutandoJuego = false;
                 }
                 else {
-                    cout << "Tecla invalida, hasta luego" << endl;
-                    system("pause");
+                    gotoxy(2, 22); cout << "Tecla invalida, hasta luego" << endl;
+                    gotoxy(2, 23); system("pause");
                     seguirEjecutandoJuego=false;
                 }
                 teclaPulsada = true;
@@ -94,17 +91,12 @@ int main() {
          }
         break;
     case '0':
-        cout << "asta la procsima" << endl;
+        gotoxy(2, 20); cout << "asta la procsima" << endl;
         return 0;
     default:
-        cout << "seleccione por favor del 0 al 4, gracias" << endl;
-    }
-
-    //termina el while infinito
+        gotoxy(2, 21); cout << "seleccione por favor del 0 al 4, gracias" << endl;
     }
     
-
-
-
+    }
     return 0;
 }

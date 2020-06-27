@@ -28,7 +28,6 @@ void pintar_bordes() {
     gotoxy(119, 1); printf("%c", 187);
     gotoxy(119, 30); printf("%c", 188);
 };
-
 // retorna el valor de la tecla pulsada
 int Y;
 char menu(string asd[], int opciones) {

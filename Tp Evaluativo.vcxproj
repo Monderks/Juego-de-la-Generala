@@ -141,8 +141,10 @@
     <ClCompile Include="Trabajo Practico.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dados.h" />
+    <ClInclude Include="Juego.h" />
+    <ClInclude Include="Jugadas.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="SantyLib.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
