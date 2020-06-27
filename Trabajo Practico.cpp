@@ -3,10 +3,9 @@
 #include <cstdio>
 #include <ctime>
 
-
 using namespace std;
 
-#include "SantyLib.h"
+#include "Juego.h"
 #include "Menu.h"
 #include "Dados.h"
 
