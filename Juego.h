@@ -516,103 +516,105 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
 
             system("cls");
         }
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //termina while por turno2
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //termina while por turno2
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
 
-            if (generala(dados2) == true) {
-                puntaje2 = puntaje2 + 50;
+        if (generala(dados2) == true) {
+            puntaje2 = puntaje2 + 50;
+            puntos2 = puntos2 + puntaje2;
+        }
+        else {
+            if (poker(dados2) == true) {
+                puntaje2 = puntaje2 + 40;
                 puntos2 = puntos2 + puntaje2;
             }
             else {
-                if (poker(dados2) == true) {
-                    puntaje2 = puntaje2 + 40;
+                if (full(dados2) == true) {
+                    puntaje2 = puntaje2 + 30;
                     puntos2 = puntos2 + puntaje2;
                 }
                 else {
-                    if (full(dados2) == true) {
-                        puntaje2 = puntaje2 + 30;
+                    if (escalera(dados2) == true) {
+                        puntaje2 = puntaje2 + 25;
                         puntos2 = puntos2 + puntaje2;
                     }
                     else {
-                        if (escalera(dados2) == true) {
-                            puntaje2 = puntaje2 + 25;
-                            puntos2 = puntos2 + puntaje2;
-                        }
-                        else {
-                            puntaje2 = puntaje2 + trio_duo_mayor(dados2);
-                            puntos2 = puntos2 + puntaje2;
-                        }
-
-
+                        puntaje2 = puntaje2 + trio_duo_mayor(dados2);
+                        puntos2 = puntos2 + puntaje2;
                     }
+
+
                 }
             }
-            pintar_bordes();
-            gotoxy(48, 2); cout << "los dados quedaron asi" << endl;
-            gotoxy(2, 3); barrita();
-            dibujar_dados(dados2);
-            gotoxy(2, 15); barrita();
-            gotoxy(48, 16); cout << "Ronda Numero= " << ronda << endl;
-            gotoxy(2, 17); barrita();
-            gotoxy(48, 18); cout << "Proximo turno es de= " << nombre << endl;
-            gotoxy(2, 19); barrita();
-            gotoxy(48, 20); cout << "Puntaje de= " << nombre << " : " << puntos << endl;
-            gotoxy(48, 21); cout << "Puntaje de= " << nombre2 << " : " << puntos2 << endl;
-            gotoxy(2, 22); barrita();
-            gotoxy(2, 24); system("pause");
-            system("cls");
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //-------------------------------------------------------------------------------------------
-            //Termino de la generala de 2 jugadores
-            pintar_bordes();
-            gotoxy(2, 2); barrita();
-            gotoxy(35, 3); cout << "Termino la partida de Generala Dos Jugadores" << endl;
-            gotoxy(2, 4); barrita();
-            gotoxy(35, 5); cout << "Jugador= " << nombre << endl;
-            gotoxy(35, 6); cout << "Puntos totales ganados del primer jugador= " << puntos << endl;
-            gotoxy(2, 7); barrita();
-            gotoxy(35, 8); cout << "Jugador= " << nombre2 << endl;
-            gotoxy(35, 9); cout << "Puntos totales ganados del segundo jugador= " << puntos2 << endl;
-            gotoxy(2, 10); barrita();
-            gotoxy(35, 11); cout << "Rondas totales= " << ronda << endl;
-            gotoxy(2, 12); barrita();
-            gotoxy(2, 13); barrita();
-            gotoxy(2, 20); system("pause");
-            system("cls");
+        }
+        pintar_bordes();
+        gotoxy(48, 2); cout << "los dados quedaron asi" << endl;
+        gotoxy(2, 3); barrita();
+        dibujar_dados(dados2);
+        gotoxy(2, 15); barrita();
+        gotoxy(48, 16); cout << "Ronda Numero= " << ronda << endl;
+        gotoxy(2, 17); barrita();
+        gotoxy(48, 18); cout << "Proximo turno es de= " << nombre << endl;
+        gotoxy(2, 19); barrita();
+        gotoxy(48, 20); cout << "Puntaje de= " << nombre << " : " << puntos << endl;
+        gotoxy(48, 21); cout << "Puntaje de= " << nombre2 << " : " << puntos2 << endl;
+        gotoxy(2, 22); barrita();
+        gotoxy(2, 24); system("pause");
+        system("cls");
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //-------------------------------------------------------------------------------------------
+        //Termino de la generala de 2 jugadores
+    }
 
-            string nombre_ganador2p;
-            int puntuacion_ganador2p;
+        pintar_bordes();
+        gotoxy(2, 2); barrita();
+        gotoxy(35, 3); cout << "Termino la partida de Generala Dos Jugadores" << endl;
+        gotoxy(2, 4); barrita();
+        gotoxy(35, 5); cout << "Jugador= " << nombre << endl;
+        gotoxy(35, 6); cout << "Puntos totales ganados del primer jugador= " << puntos << endl;
+        gotoxy(2, 7); barrita();
+        gotoxy(35, 8); cout << "Jugador= " << nombre2 << endl;
+        gotoxy(35, 9); cout << "Puntos totales ganados del segundo jugador= " << puntos2 << endl;
+        gotoxy(2, 10); barrita();
+        gotoxy(35, 11); cout << "Rondas totales= " << ronda << endl;
+        gotoxy(2, 12); barrita();
+        gotoxy(2, 13); barrita();
+        gotoxy(2, 20); system("pause");
+        system("cls");
 
-            pintar_bordes();
-            if (puntos > puntos2) {
-                gotoxy(46, 5); cout << "El ganador es el Jugador: " << nombre << endl;
-                gotoxy(46, 6); cout << "Felicidades" << endl;
+        string nombre_ganador2p;
+        int puntuacion_ganador2p;
+
+        pintar_bordes();
+        if (puntos > puntos2) {
+            gotoxy(46, 5); cout << "El ganador es el Jugador: " << nombre << endl;
+            gotoxy(46, 6); cout << "Felicidades" << endl;
             nombre_ganador2p = nombre;
             puntuacion_ganador2p = puntos;
         }
-            else if (puntos == puntos2) {
-                gotoxy(46, 5); cout << "Hubo un empate" << endl;
-                gotoxy(46, 6); cout << "Jueguense otra y denme de comer por favor" << endl;
+        else if (puntos == puntos2) {
+            gotoxy(46, 5); cout << "Hubo un empate" << endl;
+            gotoxy(46, 6); cout << "Jueguense otra y denme de comer por favor" << endl;
             nombre_ganador2p = nombre + nombre2;
             puntuacion_ganador2p = puntos;
         }
-            else {
-                gotoxy(46, 5); cout << "El ganador es el Jugador: " << nombre2 << endl;
-                gotoxy(46, 6); cout << "Felicidades" << endl;
+        else {
+            gotoxy(46, 5); cout << "El ganador es el Jugador: " << nombre2 << endl;
+            gotoxy(46, 6); cout << "Felicidades" << endl;
             nombre_ganador2p = nombre2;
             puntuacion_ganador2p = puntos2;
         }
 
-            gotoxy(2, 19); barrita();
+        gotoxy(2, 19); barrita();
 
-            gotoxy(2, 20); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
+        gotoxy(2, 20); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
 
         if (ganoConPrimeraGenerala == true)
         {
@@ -647,7 +649,7 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
                 teclaPulsada = true;
             }
         }
-    }
+    
 }
 void mostrarMayorPuntuacion(string mayorNombre,int mayorPuntuacion,int rondasMayorPuntuacion,bool &seguirEjecutandoJuego) {
     system("cls");
