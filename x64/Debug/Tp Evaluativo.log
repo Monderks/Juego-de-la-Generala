@@ -1,5 +1,2 @@
 ﻿  Trabajo Practico.cpp
-C:\Users\El Ales\source\repos\Monderks\Juego-de-la-Generala\Menu.h(55): warning C4715: 'menu': no todas las rutas de acceso de control devuelven un valor
-C:\Users\El Ales\source\repos\Monderks\Juego-de-la-Generala\Juego.h(45): warning C4715: 'seguirLanzando': no todas las rutas de acceso de control devuelven un valor
-C:\Users\El Ales\source\repos\Monderks\Juego-de-la-Generala\Juego.h(59): warning C4715: 'pedir_nombre': no todas las rutas de acceso de control devuelven un valor
   Tp Evaluativo.vcxproj -> C:\Users\El Ales\Source\Repos\Monderks\Juego-de-la-Generala\x64\Debug\Tp Evaluativo.exe

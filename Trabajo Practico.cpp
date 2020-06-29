@@ -9,9 +9,8 @@ using namespace std;
 #include "Menu.h"
 #include "Dados.h"
 
-
-
 int main() {
+    system("mode con: cols=121 lines=31");
     srand((unsigned int)time(NULL));
     string cosito[5];
     int mayorPuntuacion = 0;
@@ -55,48 +54,19 @@ int main() {
     }
         break;
     case '4': {
-
-        //mostrarMayorPuntuacion(mayorNombre, mayorPuntuacion, rondasMayorPuntuacion, seguirEjecutandoJuego);
-        
-        system("cls");
-        pintar_bordes();
-        gotoxy(2, 2); barrita();
-        gotoxy(30, 3); cout << "La persona con el puntaje mas alto de ambos modos de juego es= " << endl;
-        gotoxy(2, 4); barrita();
-        gotoxy(48, 5); cout << "Nombre= " << mayorNombre << endl;
-        gotoxy(48, 6); cout << "Su puntuacion es= " << mayorPuntuacion << endl;
-        gotoxy(48, 7); cout << "En la cantidad de rondas= " << rondasMayorPuntuacion << endl;
-        gotoxy(2, 8); barrita();
-        gotoxy(2, 20); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
-        bool teclaPulsada = false;
-        while (teclaPulsada == false) {
-            if (_kbhit()) {
-                char tecla = _getch();
-                if (tecla == '1') {
-                    system("cls");
-                    seguirEjecutandoJuego=true;
-                }
-                else if (tecla == '2') {
-                    system("cls");
-                    seguirEjecutandoJuego = false;
-                }
-                else {
-                    gotoxy(2, 22); cout << "Tecla invalida, hasta luego" << endl;
-                    gotoxy(2, 23); system("pause");
-                    seguirEjecutandoJuego=false;
-                }
-                teclaPulsada = true;
-            }
-        }
-         }
+        mostrarMayorPuntuacion(mayorNombre, mayorPuntuacion, rondasMayorPuntuacion, seguirEjecutandoJuego);
+    }
         break;
-    case '0':
-        gotoxy(2, 20); cout << "asta la procsima" << endl;
+    case '0': {
+        gotoxy(2, 20); cout << "Hasta luego" << endl;
         return 0;
-    default:
+    }
+    default:{
         gotoxy(2, 21); cout << "seleccione por favor del 0 al 4, gracias" << endl;
+    }
     }
     
     }
     return 0;
+    
 }
