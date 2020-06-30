@@ -33,17 +33,10 @@ char menu(string cosito[], int opciones) {
     for (int i = 0; i < opciones; i++)
     {
         Y = (i * 2) + 2;
-        gotoxy(2, (i * 2) + 2); cout << cosito[i];
+        gotoxy(2, (i * 2) + 2); cout << cosito[i]; //escribe el menu
     }
-    bool teclaPulsada = false;
-    while (teclaPulsada == false) {
-        if (_kbhit()) {//retorna true, cuando se presione una tecla
             char tecla = _getch();//obtiene el valor de la tecla pulsada
             return tecla;
-            teclaPulsada = true;
-        }
-    }
-    return '1';
 }
 void cuadrado(int x, int y) {
     for (int i = x+1; i < x+60; i++) {
