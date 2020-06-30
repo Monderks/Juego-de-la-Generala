@@ -105,6 +105,47 @@ void pantallaGanoConGeneralaServida() {
     gotoxy(2, 21); system("pause");
     system("cls");
 }
+int pedirRondas() {
+    char opcion_dado;
+    int cant_rondas;
+    system("cls");
+    gotoxy(2, 5); barrita();
+    pintar_bordes();
+    gotoxy(2, 2); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+    gotoxy(2, 4); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+    gotoxy(2, 6); cin >> opcion_dado;
+    if (opcion_dado == '1') {
+        gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
+        gotoxy(2, 10); cin >> cant_rondas;
+    }
+    else {
+        while (opcion_dado != '1' && opcion_dado != '0') {
+            system("cls");
+            gotoxy(2, 7); barrita();
+            gotoxy(2, 9); barrita();
+            pintar_bordes();
+            gotoxy(2, 2); cout << "por favor ingresar un digito valido." << endl;
+            gotoxy(2, 4); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
+            gotoxy(2, 6); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
+            gotoxy(2, 8); cin >> opcion_dado;
+            if (opcion_dado == '1') {
+                gotoxy(2, 11); barrita();
+                gotoxy(2, 13); barrita();
+                pintar_bordes();
+                gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
+                gotoxy(2, 12); cin >> cant_rondas;
+            }
+            else if (opcion_dado == '2') {
+                system("cls");
+                pintar_bordes();
+                gotoxy(2, 2); cout << "Usted eligio la opcion 2";
+                gotoxy(2, 2); cout << "la cantidad de rondas por defecto es 10";
+                cant_rondas = 10;
+            }
+        }
+    }
+    return cant_rondas;
+}
 void modoUnJugador(int &mayorPuntuacion,int &rondasMayorPuntuacion,string &mayorNombre,
 bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaFueConGeneralaServida){
     bool modojuego_singular = true;
@@ -112,8 +153,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
         bool juegoterminado = false;
         int ronda = 0;
-        int cant_rondas=10;
-        char opcion_dado;
+        int cant_rondas;
         int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
         int dados[5];
         int j;
@@ -123,35 +163,9 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         pintar_bordes();
         gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
         string nombre = pedir_nombre(true);
-        system("cls");
-        gotoxy(2, 5); barrita();
-        pintar_bordes();
-        gotoxy(2, 2); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-        gotoxy(2, 4); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-        gotoxy(2, 6); cin >> opcion_dado;
-        if (opcion_dado == '1') {
-            gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
-            gotoxy(2, 10); cin >> cant_rondas;
-        }
-        else {
-            while (opcion_dado != '1' && opcion_dado != '0') {
-                system("cls");
-                gotoxy(2, 7); barrita();
-                gotoxy(2, 9); barrita();
-                pintar_bordes();
-                gotoxy(2, 2); cout << "por favor ingresar un digito valido." << endl;
-                gotoxy(2, 4); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-                gotoxy(2, 6); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-                gotoxy(2, 8); cin >> opcion_dado;
-                if (opcion_dado == '1') {
-                    gotoxy(2, 11); barrita();
-                    gotoxy(2, 13); barrita();
-                    pintar_bordes();
-                    gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
-                    gotoxy(2, 12); cin >> cant_rondas;
-                }
-            }
-        }
+        //-------------------------------------------------------------------------------------------
+        cant_rondas = pedirRondas();//Funcion que retorna el valor de lo que dice su nombre
+        //-------------------------------------------------------------------------------------------
         system("cls");
         while (ronda != cant_rondas && juegoterminado == false) {
             int turno = 0;
@@ -290,7 +304,6 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
     bool juegoterminado = false;
     int ronda = 0;
     int cant_rondas = 10;
-    char opcion_dado;
     int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
     int puntos2 = 0;
     int dados[5];
@@ -306,37 +319,10 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
     gotoxy(2, 7); barrita();
     pintar_bordes();
     string nombre2 = pedir_nombre(false);
-    system("cls");
-    gotoxy(2, 5); barrita();
-    pintar_bordes();
-    gotoxy(2, 2); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-    gotoxy(2, 4); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-    gotoxy(2, 6); cin >> opcion_dado;
-    if (opcion_dado == '1') {
-        gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
-        gotoxy(2, 10); cin >> cant_rondas;
-    }
-    else {
-        while (opcion_dado != '1' && opcion_dado != '0') {
-            system("cls");
-            gotoxy(2, 7); barrita();
-            gotoxy(2, 9); barrita();
-            pintar_bordes();
-            gotoxy(2, 2); cout << "por favor ingresar un digito valido." << endl;
-            gotoxy(2, 4); cout << "Para ingresar cantidad de rondas, ingresar 1" << endl;
-            gotoxy(2, 6); cout << "Para ingresar rondas predefinidas, ingresar 0 (10 rondas)" << endl;
-            gotoxy(2, 8); cin >> opcion_dado;
-            if (opcion_dado == '1') {
-                gotoxy(2, 11); barrita();
-                gotoxy(2, 13); barrita();
-                pintar_bordes();
-                gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
-                gotoxy(2, 12); cin >> cant_rondas;
-            }
-        }
-    }
-    system("cls");
     //-------------------------------------------------------------------------------------------
+    cant_rondas=pedirRondas();//Funcion que retorna el valor de lo que dice su nombre
+    //-------------------------------------------------------------------------------------------
+    system("cls");
     //-------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
     //-------------------------------------------------------------------------------------------
@@ -364,7 +350,6 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
             //----------------------------------------------------
             menu_lanzamientos(nombre, ronda, puntos, turno, dados);
             //----------------------------------------------------
-
             if (generala(dados) && turno == 1) {
                 //--------------------------------
                 pantallaGanoConGeneralaServida();//esta funcion, muestra lo que te imaginas viendo su nombre
@@ -486,7 +471,6 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
                     }
                 }
             }
-
             system("cls");
         }
         //-------------------------------------------------------------------------------------------
@@ -496,7 +480,6 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
         //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
-
         if (generala(dados2) == true) {
             puntaje2 = puntaje2 + 50;
             puntos2 = puntos2 + puntaje2;
@@ -520,8 +503,6 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
                         puntaje2 = puntaje2 + trio_duo_mayor(dados2);
                         puntos2 = puntos2 + puntaje2;
                     }
-
-
                 }
             }
         }
