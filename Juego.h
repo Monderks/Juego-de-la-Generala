@@ -111,7 +111,7 @@ void pantallaGanoConGeneralaServida() {
 }
 int pedirRondas() {
     char opcion_dado;
-    int cant_rondas;
+    int cant_rondas=10;
     system("cls");
     gotoxy(2, 5); barrita();
     pintar_bordes();
@@ -127,10 +127,11 @@ int pedirRondas() {
         pintar_bordes();
         gotoxy(2, 2); cout << "Usted eligio la opcion 0";
         gotoxy(2, 2); cout << "la cantidad de rondas por defecto es 10";
-        cant_rondas = 10;
+        
     }
     else {
         while (opcion_dado != '1' && opcion_dado != '0') {
+            cant_rondas = 10;
             system("cls");
             gotoxy(2, 7); barrita();
             gotoxy(2, 9); barrita();
@@ -151,7 +152,7 @@ int pedirRondas() {
                 pintar_bordes();
                 gotoxy(2, 2); cout << "Usted eligio la opcion 0";
                 gotoxy(2, 2); cout << "la cantidad de rondas por defecto es 10";
-                cant_rondas = 10;
+               
             }
         }
     }

@@ -25,6 +25,11 @@ int main() {
     cosito[2] = "presione 3 para ver las instrucciones";
     cosito[3] = "presione 4 para ver la puntuacion mas alta";
     cosito[4] = "presione 0 para salir";
+    gotoxy(5, 29); cout << "Alejo Tomas Clifton Goldney";
+    gotoxy(55, 29); cout << "Alexander Popp";
+    gotoxy(100, 29); cout << "Fernando Moschen";
+    gotoxy(105, 3); cout << "Version 2.1";
+    gotoxy(105, 5); cout << "UTN-Pacheco";
     switch (menu(cosito, 5)) {
     case '1': {
         
