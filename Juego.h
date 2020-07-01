@@ -16,6 +16,7 @@ void barrita() {
 }
 bool seguirLanzando() {
     char j;
+    bool teclaIncorrecta = true;
     gotoxy(2, 16); cout << "Desea seguir lanzando? (s / n) ";
     cin >> j;
     cout << endl;
@@ -26,19 +27,24 @@ bool seguirLanzando() {
         return false;
     }
     else {
-        while (j != 's' || j != 'S' || j != 'n' || j != 'N') {
-            barrita();
-            gotoxy(2, 16); cout << "Esa opcion no es aceptable." << endl << "por favor, volver a ingresar un digito valido." << endl;
-            barrita();
-            gotoxy(2, 17); cout << "Desea seguir lanzando? (s / n) ";
+        teclaIncorrecta = true;
+        while (teclaIncorrecta = true) {
+            gotoxy(2, 15); barrita();
+            gotoxy(2, 16); cout << "Esa opcion no es aceptable.";
+            gotoxy(2, 17); cout << "por favor, volver a ingresar un digito valido." << endl;
+            gotoxy(2, 18); barrita();
+            gotoxy(2, 19); cout << "Desea seguir lanzando? (s / n) ";
             cin >> j;
             cout << endl;
             if (j == 's' || j == 'S') {
                 return true;
+                teclaIncorrecta = false;
             }
             else if (j == 'n' || j == 'N') {
                 return false;
+                teclaIncorrecta = false;
             }
+           gotoxy(2, 19); cout << "                                                                                                                     ";//para borrar la lo que se escriba cuando se pregunta si desea volver a tirar (linea 36) pero sin borrar toda la pantalla
             }
     }
     return false;
