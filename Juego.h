@@ -28,7 +28,7 @@ bool seguirLanzando() {
     }
     else {
         teclaIncorrecta = true;
-        while (teclaIncorrecta = true) {
+        while (teclaIncorrecta == true) {
             gotoxy(2, 15); barrita();
             gotoxy(2, 16); cout << "Esa opcion no es aceptable.";
             gotoxy(2, 17); cout << "por favor, volver a ingresar un digito valido." << endl;
@@ -63,7 +63,6 @@ string pedir_nombre(bool nombre_primer_jugador) {
         }
     return nombre;
     }  
-
 void  menu_lanzamientos(string nombre, int ronda, int puntos, int turno, int dados[]) {
     pintar_bordes();
     gotoxy(2, 2); cout << "Turno de: " << nombre;
@@ -93,7 +92,6 @@ void menu_entre_rondas2p(string nombreActual, string nombreSiguiente, int ronda,
     gotoxy(2, 24); system("pause");
     system("cls");
 }
-
 void pantallaGanoConGeneralaServida() {
     gotoxy(2, 15); barrita();
     gotoxy(2, 17); barrita();
@@ -124,6 +122,13 @@ int pedirRondas() {
         gotoxy(2, 8); cout << "Ingresar la cantidad de rondas" << endl;
         gotoxy(2, 10); cin >> cant_rondas;
     }
+    else if (opcion_dado == '0') {
+        system("cls");
+        pintar_bordes();
+        gotoxy(2, 2); cout << "Usted eligio la opcion 0";
+        gotoxy(2, 2); cout << "la cantidad de rondas por defecto es 10";
+        cant_rondas = 10;
+    }
     else {
         while (opcion_dado != '1' && opcion_dado != '0') {
             system("cls");
@@ -141,10 +146,10 @@ int pedirRondas() {
                 gotoxy(2, 10); cout << "Ingresar la cantidad de rondas" << endl;
                 gotoxy(2, 12); cin >> cant_rondas;
             }
-            else if (opcion_dado == '2') {
+            else if (opcion_dado == '0') {
                 system("cls");
                 pintar_bordes();
-                gotoxy(2, 2); cout << "Usted eligio la opcion 2";
+                gotoxy(2, 2); cout << "Usted eligio la opcion 0";
                 gotoxy(2, 2); cout << "la cantidad de rondas por defecto es 10";
                 cant_rondas = 10;
             }
@@ -159,7 +164,6 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         int puntaje;    //PUNTAJE ES LA PUNTUACION POR RONDA
         bool juegoterminado = false;
         int ronda = 0;
-        int cant_rondas;
         int puntos = 0;  //PUNTOS ES EL PUNTAJE TOTAL
         int dados[5];
         int j;
@@ -170,7 +174,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         gotoxy(2, 2); cout << "Bienvenido al Juego solitario" << endl;
         string nombre = pedir_nombre(true);
         //-------------------------------------------------------------------------------------------
-        cant_rondas = pedirRondas();//Funcion que retorna el valor de lo que dice su nombre
+        int cant_rondas = pedirRondas();//Funcion que retorna el valor de lo que dice su nombre
         //-------------------------------------------------------------------------------------------
         system("cls");
         while (ronda != cant_rondas && juegoterminado == false) {
@@ -265,7 +269,9 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
             gotoxy(2, 19); barrita();
             gotoxy(2, 20); system("pause");
             system("cls");
+
         }//termino de while
+
         pintar_bordes();
         cuadrado(30,4);
         gotoxy(39, 6); cout << "Terminaste tu partida de Generala solitario" << endl;
@@ -274,6 +280,7 @@ bool &seguirEjecutandoJuego,bool &ganoConPrimeraGenerala,bool &puntuacionMaximaF
         gotoxy(2, 21); barrita();
         gotoxy(2, 22); cout << "Para volver al menu principal presione 1, presione 2 para salir" << endl;
         gotoxy(2, 23); barrita();
+
        if (ganoConPrimeraGenerala==true)
         {
             mayorNombre = nombre;
@@ -392,9 +399,7 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
         }
         //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
-        //-------------------------------------------------------------------------------------------
         //termina while por turno1
-        //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
         if (generala(dados) == true) {
@@ -435,10 +440,9 @@ void modoDosJugadores(int& mayorPuntuacion, int& rondasMayorPuntuacion, string& 
         //-------------------------------------------------------------------------------------------
         //-------------------------------------------------------------------------------------------
         seguir = true;
-        turno = 0;
+        turno = 1;
         while (turno < 3 && seguir) {
             puntaje2 = 0;
-            turno++;
             //----------------------------------------------------
             menu_lanzamientos(nombre2, ronda, puntos2, turno, dados2);
             //----------------------------------------------------
