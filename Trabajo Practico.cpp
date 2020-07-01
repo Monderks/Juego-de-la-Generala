@@ -28,8 +28,10 @@ int main() {
     gotoxy(5, 29); cout << "Alejo Tomas Clifton Goldney";
     gotoxy(55, 29); cout << "Alexander Popp";
     gotoxy(100, 29); cout << "Fernando Moschen";
-    gotoxy(105, 3); cout << "Version 2.1";
-    gotoxy(105, 5); cout << "UTN-Pacheco";
+    marco_dado(104, 1);
+    gotoxy(106, 3); cout << "Version";
+    gotoxy(108, 4); cout << "2.1";
+    gotoxy(106, 5); cout << "UTN-FRGP";
     switch (menu(cosito, 5)) {
     case '1': {
         
